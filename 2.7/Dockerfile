@@ -20,6 +20,7 @@ RUN apk add --no-cache --quiet --virtual \
       .build-deps \
       bash \
       gcc \
+      git \
       libc-dev \
       libffi-dev \
       make \
