@@ -24,6 +24,7 @@ RUN apk add --no-cache --quiet --virtual \
       libc-dev \
       libffi-dev \
       make \
+      openssh-client \
       openssl-dev \
       python3 \
       python3-dev
