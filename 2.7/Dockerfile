@@ -30,9 +30,7 @@ RUN apk add --no-cache --quiet --virtual \
 RUN pip3 install --upgrade pip && \
     pip3 install ansible==${ANSIBLE_VERSION}
 
-ENTRYPOINT [ "ansible" ]
-
-CMD [ "--version" ]
+CMD [ "ansible", "--version" ]
 
 HEALTHCHECK NONE
 # EOF
