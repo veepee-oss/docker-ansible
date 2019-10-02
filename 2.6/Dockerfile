@@ -30,7 +30,7 @@ RUN apk add --no-cache --quiet --virtual \
       python3-dev
 
 RUN pip3 install --upgrade pip && \
-    pip3 install ansible==${ANSIBLE_VERSION}
+    pip3 install ansible==${ANSIBLE_VERSION} openshift
 
 CMD [ "ansible", "--version" ]
 
