@@ -19,11 +19,9 @@
   stage: test
   image: docker:latest
   before_script:
-    - docker load -i image/v2.4.tar
-    - docker load -i image/v2.5.tar
-    - docker load -i image/v2.6.tar
     - docker load -i image/v2.7.tar
     - docker load -i image/v2.8.tar
+    - docker load -i image/v2.9.tar
   only:
     - master
   services:
@@ -37,11 +35,9 @@
   image: docker:latest
   before_script:
     - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
-    - docker load -i image/v2.4.tar
-    - docker load -i image/v2.5.tar
-    - docker load -i image/v2.6.tar
     - docker load -i image/v2.7.tar
     - docker load -i image/v2.8.tar
+    - docker load -i image/v2.9.tar
   only:
     - master
   services:
@@ -63,27 +59,6 @@ dockerlint:
     - find . -type f -name "Dockerfile" | xargs -I {} dockerlint {}
 
 # build
-v2.4:build:
-  extends: .build
-  script:
-    - docker build --rm --tag ansible:2.4 2.4
-    - mkdir image
-    - docker save ansible:2.4 > image/v2.4.tar
-
-v2.5:build:
-  extends: .build
-  script:
-    - docker build --rm --tag ansible:2.5 2.5
-    - mkdir image
-    - docker save ansible:2.5 > image/v2.5.tar
-
-v2.6:build:
-  extends: .build
-  script:
-    - docker build --rm --tag ansible:2.6 2.6
-    - mkdir image
-    - docker save ansible:2.6 > image/v2.6.tar
-
 v2.7:build:
   extends: .build
   script:
@@ -98,22 +73,14 @@ v2.8:build:
     - mkdir image
     - docker save ansible:2.8 > image/v2.8.tar
 
+v2.9:build:
+  extends: .build
+  script:
+    - docker build --rm --tag ansible:2.9 2.9
+    - mkdir image
+    - docker save ansible:2.9 > image/v2.9.tar
+
 # test
-v2.4:test:
-  extends: .test
-  script:
-    - docker run ansible:2.4 ansible --version
-
-v2.5:test:
-  extends: .test
-  script:
-    - docker run ansible:2.5 ansible --version
-
-v2.6:test:
-  extends: .test
-  script:
-    - docker run ansible:2.6 ansible --version
-
 v2.7:test:
   extends: .test
   script:
@@ -124,38 +91,38 @@ v2.8:test:
   script:
     - docker run ansible:2.8 ansible --version
 
+v2.9:test:
+  extends: .test
+  script:
+    - docker run ansible:2.9 ansible --version
+
 # deploy
 # https://hub.docker.com/u/vpgrp/
 vpgrp:
   extends: .deploy
   script:
-    - docker tag ansible:2.4 vpgrp/ansible:2.4
-    - docker tag ansible:2.5 vpgrp/ansible:2.5
-    - docker tag ansible:2.6 vpgrp/ansible:2.6
     - docker tag ansible:2.7 vpgrp/ansible:2.7
     - docker tag ansible:2.8 vpgrp/ansible:2.8
-    - docker tag ansible:2.8 vpgrp/ansible:latest
+    - docker tag ansible:2.9 vpgrp/ansible:2.9
+    - docker tag ansible:2.9 vpgrp/ansible:latest
     - docker push vpgrp/ansible:2.4
     - docker push vpgrp/ansible:2.5
     - docker push vpgrp/ansible:2.6
     - docker push vpgrp/ansible:2.7
     - docker push vpgrp/ansible:2.8
+    - docker push vpgrp/ansible:2.9
     - docker push vpgrp/ansible:latest
 
 # https://hub.docker.com/u/vptech/
 vptech:
   extends: .deploy
   script:
-    - docker tag ansible:2.4 vptech/ansible:2.4
-    - docker tag ansible:2.5 vptech/ansible:2.5
-    - docker tag ansible:2.6 vptech/ansible:2.6
     - docker tag ansible:2.7 vptech/ansible:2.7
     - docker tag ansible:2.8 vptech/ansible:2.8
-    - docker tag ansible:2.8 vptech/ansible:latest
-    - docker push vptech/ansible:2.4
-    - docker push vptech/ansible:2.5
-    - docker push vptech/ansible:2.6
+    - docker tag ansible:2.9 vptech/ansible:2.9
+    - docker tag ansible:2.9 vptech/ansible:latest
     - docker push vptech/ansible:2.7
     - docker push vptech/ansible:2.8
+    - docker push vptech/ansible:2.9
     - docker push vptech/ansible:latest
 # EOF
