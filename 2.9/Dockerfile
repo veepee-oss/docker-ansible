@@ -14,7 +14,7 @@
 
 FROM vptech/alpine:latest
 
-ENV ANSIBLE_VERSION="2.8.6"
+ENV ANSIBLE_VERSION="2.9.0"
 
 RUN apk add --no-cache --quiet --virtual \
       .build-deps \
