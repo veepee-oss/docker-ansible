@@ -26,13 +26,11 @@ Docker images of Ansible.
 
 ## Tags
 
-Supported tags.
+Supported tags (See [Ansible maintenance documentation](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html)).
 
-- 2.4
-- 2.5
-- 2.6
 - 2.7
-- 2.8, latest
+- 2.8
+- 2.9, latest
 
 ## Usage
 
