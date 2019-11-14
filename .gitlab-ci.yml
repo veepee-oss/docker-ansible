@@ -13,6 +13,8 @@
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
+  tags:
+    - dind
 
 # test template
 .test:
@@ -28,6 +30,8 @@
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
+  tags:
+    - dind
 
 # deploy template
 .deploy:
@@ -44,6 +48,8 @@
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
+  tags:
+    - dind
 
 stages:
   - lint
