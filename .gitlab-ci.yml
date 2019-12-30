@@ -68,21 +68,21 @@ dockerlint:
 v2.7:build:
   extends: .build
   script:
-    - docker build --rm --tag ansible:2.7 2.7
+    - docker build --build-arg ANSIBLE_VERSION=2.7.13 --rm --tag ansible:2.7 .
     - mkdir image
     - docker save ansible:2.7 > image/v2.7.tar
 
 v2.8:build:
   extends: .build
   script:
-    - docker build --rm --tag ansible:2.8 2.8
+    - docker build --build-arg ANSIBLE_VERSION=2.8.6 --rm --tag ansible:2.8 .
     - mkdir image
     - docker save ansible:2.8 > image/v2.8.tar
 
 v2.9:build:
   extends: .build
   script:
-    - docker build --rm --tag ansible:2.9 2.9
+    - docker build --build-arg ANSIBLE_VERSION=2.9.2 --rm --tag ansible:2.9 .
     - mkdir image
     - docker save ansible:2.9 > image/v2.9.tar
 
