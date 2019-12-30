@@ -19,6 +19,7 @@ ENV ANSIBLE_VERSION="2.8.6"
 RUN apk add --no-cache --quiet --virtual \
       .build-deps \
       bash \
+      curl \
       gcc \
       git \
       libc-dev \
@@ -27,11 +28,16 @@ RUN apk add --no-cache --quiet --virtual \
       openssh-client \
       openssl-dev \
       python3 \
-      python3-dev \
-      curl
+      python3-dev
 
-RUN pip3 install --upgrade pip && \
-    pip3 install ansible==${ANSIBLE_VERSION} openshift
+RUN pip3 install --quiet --upgrade pip && \
+    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift
+
+RUN apk del --no-cache --quiet \
+      .build-deps \
+      gcc \
+      make  && \
+    rm -rf /var/cache/apk/*
 
 CMD [ "ansible", "--version" ]
 
