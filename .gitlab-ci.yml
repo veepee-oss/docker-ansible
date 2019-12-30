@@ -104,17 +104,17 @@ v2.9:test:
 
 # deploy
 # https://hub.docker.com/u/vpgrp/
-vpgrp:
-  extends: .deploy
-  script:
-    - docker tag ansible:2.7 vpgrp/ansible:2.7
-    - docker tag ansible:2.8 vpgrp/ansible:2.8
-    - docker tag ansible:2.9 vpgrp/ansible:2.9
-    - docker tag ansible:2.9 vpgrp/ansible:latest
-    - docker push vpgrp/ansible:2.7
-    - docker push vpgrp/ansible:2.8
-    - docker push vpgrp/ansible:2.9
-    - docker push vpgrp/ansible:latest
+# vpgrp:
+#   extends: .deploy
+#   script:
+#     - docker tag ansible:2.7 vpgrp/ansible:2.7
+#     - docker tag ansible:2.8 vpgrp/ansible:2.8
+#     - docker tag ansible:2.9 vpgrp/ansible:2.9
+#     - docker tag ansible:2.9 vpgrp/ansible:latest
+#     - docker push vpgrp/ansible:2.7
+#     - docker push vpgrp/ansible:2.8
+#     - docker push vpgrp/ansible:2.9
+#     - docker push vpgrp/ansible:latest
 
 # https://hub.docker.com/u/vptech/
 vptech:
