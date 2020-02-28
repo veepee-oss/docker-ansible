@@ -31,7 +31,7 @@ RUN apk add --no-cache --quiet --virtual \
       python3-dev
 
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift
+    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift hvac
 
 RUN apk del --no-cache --quiet \
       gcc \
