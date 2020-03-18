@@ -27,6 +27,7 @@ RUN apk add --no-cache --quiet --virtual \
       make \
       openssh-client \
       openssl-dev \
+      postgresql-client \
       postgresql-dev \
       postgresql-libs \
       python3 \
