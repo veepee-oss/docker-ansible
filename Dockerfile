@@ -14,7 +14,7 @@
 
 FROM vptech/alpine:latest
 
-ARG ANSIBLE_VERSION="2.9.2"
+ARG ANSIBLE_VERSION="2.9.6"
 
 RUN apk add --no-cache --quiet --virtual \
       .build-deps \
@@ -27,12 +27,14 @@ RUN apk add --no-cache --quiet --virtual \
       make \
       openssh-client \
       openssl-dev \
+      postgresql-dev \
+      postgresql-libs \
       python3 \
       python3-dev \
       unzip
 
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift hvac
+    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift hvac psycopg2
 
 RUN apk del --no-cache --quiet \
       gcc \
