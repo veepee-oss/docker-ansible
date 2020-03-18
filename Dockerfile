@@ -28,7 +28,8 @@ RUN apk add --no-cache --quiet --virtual \
       openssh-client \
       openssl-dev \
       python3 \
-      python3-dev
+      python3-dev \
+      unzip
 
 RUN pip3 install --quiet --upgrade pip && \
     pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift hvac
