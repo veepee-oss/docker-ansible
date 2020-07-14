@@ -12,13 +12,14 @@
 # OTHER  TORTIOUS ACTION,  ARISING OUT  OF  OR IN  CONNECTION WITH  THE USE  OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-FROM vptech/alpine:latest
+FROM alpine:3.12.0
 
-ARG ANSIBLE_VERSION="2.9.6"
+ARG ANSIBLE_VERSION="2.9.10"
 
 RUN apk add --no-cache --quiet --virtual \
       .build-deps \
       bash \
+      ca-certificates \
       curl \
       gcc \
       git \
@@ -35,7 +36,10 @@ RUN apk add --no-cache --quiet --virtual \
       unzip
 
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet ansible==${ANSIBLE_VERSION} openshift hvac psycopg2
+    pip3 install --quiet ansible==${ANSIBLE_VERSION} && \
+    pip3 install --quiet hvac && \
+    pip3 install --quiet openshift && \
+    pip3 install --quiet psycopg2
 
 RUN apk del --no-cache --quiet \
       gcc \

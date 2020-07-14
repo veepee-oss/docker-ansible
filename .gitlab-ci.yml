@@ -1,131 +1,50 @@
 ---
-# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
 
-# build template
-.build:
-  stage: build
-  image: docker:latest
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - image
-  services:
-    - docker:dind
-  variables:
-    DOCKER_DRIVER: overlay
-  tags:
-    - dind
+include:
+  - project: veepee/vptech/sre/iac/ci-cd/docker-lint
+    ref: 1.0.0
+    file: gitlab-ci-lint.yml
+  - project: veepee/vptech/sre/iac/ci-cd/docker-build
+    ref: 4.2.0
+    file: gitlab-ci-build.yml
+  - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
+    ref: 1.2.0
+    file: gitlab-ci.yml
+  - project: veepee/vptech/sre/iac/ci-cd/semantic-release
+    ref: 2.6.0
+    file: gitlab-ci.yml
 
-# test template
-.test:
-  stage: test
-  image: docker:latest
-  before_script:
-    - docker load -i image/v2.7.tar
-    - docker load -i image/v2.8.tar
-    - docker load -i image/v2.9.tar
-  only:
-    - master
-  services:
-    - docker:dind
-  variables:
-    DOCKER_DRIVER: overlay
-  tags:
-    - dind
-
-# deploy template
-.deploy:
-  stage: deploy
-  image: docker:latest
-  before_script:
-    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
-    - docker load -i image/v2.7.tar
-    - docker load -i image/v2.8.tar
-    - docker load -i image/v2.9.tar
-  only:
-    - master
-  services:
-    - docker:dind
-  variables:
-    DOCKER_DRIVER: overlay
-  tags:
-    - dind
+variables:
+  APP_NAME: molecule
+  DOCKER_DISABLE_ALL_JOBS: 'true'
+  DOCKER_PUBLIC_REGISTRY_URL: docker.io
+  DOCKER_PUBLIC_REGISTRY_USERNAME: ${PUBLIC_REGISTRY_USERNAME}
+  DOCKER_PUBLIC_REGISTRY_PASSWORD: ${PUBLIC_REGISTRY_PASSWORD}
+  DOCKER_PUBLIC_REPO: vptech
+  PUBLIC: 'true'
 
 stages:
   - lint
   - build
   - test
-  - deploy
+  - publish
+  - release
 
-# test
-dockerlint:
-  stage: lint
-  image: vptech/linter:docker
-  script:
-    - find . -type f -name "Dockerfile" | xargs -I {} dockerlint {}
+public:v2.7:
+  extends: .publish-public:docker
+  variables:
+    ANSIBLE_VERSION: 2.7.13
+    TAG: 2.7.13 2.7
 
-# build
-v2.7:build:
-  extends: .build
-  script:
-    - docker build --build-arg ANSIBLE_VERSION=2.7.13 --rm --tag ansible:2.7 .
-    - mkdir image
-    - docker save ansible:2.7 > image/v2.7.tar
+public:v2.8:
+  extends: .publish-public:docker
+  variables:
+    ANSIBLE_VERSION: 2.8.6
+    TAG: 2.8.6 2.8
 
-v2.8:build:
-  extends: .build
-  script:
-    - docker build --build-arg ANSIBLE_VERSION=2.8.6 --rm --tag ansible:2.8 .
-    - mkdir image
-    - docker save ansible:2.8 > image/v2.8.tar
-
-v2.9:build:
-  extends: .build
-  script:
-    - docker build --build-arg ANSIBLE_VERSION=2.9.2 --rm --tag ansible:2.9 .
-    - mkdir image
-    - docker save ansible:2.9 > image/v2.9.tar
-
-# test
-v2.7:test:
-  extends: .test
-  script:
-    - docker run ansible:2.7 ansible --version
-
-v2.8:test:
-  extends: .test
-  script:
-    - docker run ansible:2.8 ansible --version
-
-v2.9:test:
-  extends: .test
-  script:
-    - docker run ansible:2.9 ansible --version
-
-# deploy
-# https://hub.docker.com/u/vpgrp/
-# vpgrp:
-#   extends: .deploy
-#   script:
-#     - docker tag ansible:2.7 vpgrp/ansible:2.7
-#     - docker tag ansible:2.8 vpgrp/ansible:2.8
-#     - docker tag ansible:2.9 vpgrp/ansible:2.9
-#     - docker tag ansible:2.9 vpgrp/ansible:latest
-#     - docker push vpgrp/ansible:2.7
-#     - docker push vpgrp/ansible:2.8
-#     - docker push vpgrp/ansible:2.9
-#     - docker push vpgrp/ansible:latest
-
-# https://hub.docker.com/u/vptech/
-vptech:
-  extends: .deploy
-  script:
-    - docker tag ansible:2.7 vptech/ansible:2.7
-    - docker tag ansible:2.8 vptech/ansible:2.8
-    - docker tag ansible:2.9 vptech/ansible:2.9
-    - docker tag ansible:2.9 vptech/ansible:latest
-    - docker push vptech/ansible:2.7
-    - docker push vptech/ansible:2.8
-    - docker push vptech/ansible:2.9
-    - docker push vptech/ansible:latest
-# EOF
+public:v2.9:
+  extends: .publish-public:docker
+  variables:
+    ANSIBLE_VERSION: 2.9.10
+    TAG: 2.9.10 2.9 latest
+...
