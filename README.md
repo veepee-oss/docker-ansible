@@ -4,12 +4,12 @@
 [![docker][docker-img]][docker-href]
 
 1. [Overview](#overview)
-2. [Description](#description)
-3. [Tags](#setup)
-4. [Usage](#usage)
-5. [Limitations](#limitations)
-6. [Development](#development)
-7. [Miscellaneous](#miscellaneous)
+1. [Description](#description)
+1. [Tags](#setup)
+1. [Usage](#usage)
+1. [Limitations](#limitations)
+1. [Development](#development)
+1. [Miscellaneous](#miscellaneous)
 
 ## Overview
 
@@ -28,13 +28,9 @@ Docker images of Ansible.
 
 Supported tags (See [Ansible maintenance documentation](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html)).
 
-- 2.7
-- 2.8
-- 2.9, latest
-
-## Usage
-
-WIP.
+- 2.7, 2.7.13
+- 2.8, 2.8.6
+- 2.9, 2.9.10, latest
 
 ## Limitations
 
