@@ -15,7 +15,7 @@ include:
     file: gitlab-ci.yml
 
 variables:
-  APP_NAME: molecule
+  APP_NAME: ansible
   DOCKER_DISABLE_ALL_JOBS: 'true'
   DOCKER_PUBLIC_REGISTRY_URL: docker.io
   DOCKER_PUBLIC_REGISTRY_USERNAME: ${PUBLIC_REGISTRY_USERNAME}
