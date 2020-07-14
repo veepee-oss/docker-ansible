@@ -12,7 +12,7 @@
 # OTHER  TORTIOUS ACTION,  ARISING OUT  OF  OR IN  CONNECTION WITH  THE USE  OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-FROM alpine:3.12.0
+FROM python:3.8-alpine
 
 ARG ANSIBLE_VERSION="2.9.10"
 
@@ -31,8 +31,6 @@ RUN apk add --no-cache --quiet --virtual \
       postgresql-client \
       postgresql-dev \
       postgresql-libs \
-      python3 \
-      python3-dev \
       unzip
 
 RUN pip3 install --quiet --upgrade pip && \
