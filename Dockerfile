@@ -16,9 +16,9 @@ FROM python:3.8-alpine
 
 ARG ANSIBLE_VERSION="2.9.10"
 
-RUN apk add --no-cache --quiet --virtual \
-      .build-deps \
+RUN apk add --no-cache --quiet \
       bash \
+      build-base \
       ca-certificates \
       curl \
       gcc \
@@ -40,6 +40,7 @@ RUN pip3 install --quiet --upgrade pip && \
     pip3 install --quiet psycopg2
 
 RUN apk del --no-cache --quiet \
+      build-base \
       gcc \
       make  && \
     rm -rf /var/cache/apk/*
