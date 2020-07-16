@@ -1,0 +1,6 @@
+## [1.0.2](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.1...1.0.2) (2020-07-16)
+
+
+### Bug Fixes
+
+* improved ci ([b34891a](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/b34891ae7513b7f9a1d45694f739875f9c4630cd))
