@@ -34,18 +34,18 @@ stages:
 public:v2.7:
   extends: .publish-public:docker
   variables:
-    ANSIBLE_VERSION: 2.7.13
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.7.13
     TAG: 2.7.13 2.7
 
 public:v2.8:
   extends: .publish-public:docker
   variables:
-    ANSIBLE_VERSION: 2.8.6
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.8.6
     TAG: 2.8.6 2.8
 
 public:v2.9:
   extends: .publish-public:docker
   variables:
-    ANSIBLE_VERSION: 2.9.10
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.9.10
     TAG: 2.9.10 2.9 latest
 ...
