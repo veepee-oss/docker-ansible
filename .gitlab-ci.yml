@@ -11,7 +11,7 @@ include:
     ref: 1.2.0
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/semantic-release
-    ref: 2.9.0
+    ref: 2.10.0
     file: gitlab-ci.yml
 
 variables:
@@ -46,6 +46,6 @@ public:v2.8:
 public:v2.9:
   extends: .publish-public:docker
   variables:
-    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.9.10
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.9.11
     TAG: 2.9.11 2.9 latest
 ...
