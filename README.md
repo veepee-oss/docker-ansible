@@ -30,7 +30,7 @@ Supported tags (See [Ansible maintenance documentation](https://docs.ansible.com
 
 - 2.7, 2.7.13
 - 2.8, 2.8.6
-- 2.9, 2.9.10, latest
+- 2.9, 2.9.11, latest
 
 ## Limitations
 
