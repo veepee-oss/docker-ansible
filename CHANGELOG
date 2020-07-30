@@ -1,3 +1,10 @@
+## [1.0.5](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.4...1.0.5) (2020-07-30)
+
+
+### Bug Fixes
+
+* fix ansible version ([6921fdd](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/6921fdd1a207dc28ca645caf9ff93ef1f6c2954c))
+
 ## [1.0.4](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.3...1.0.4) (2020-07-30)
 
 
