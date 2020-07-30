@@ -5,7 +5,7 @@ include:
     ref: 2.0.0
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/docker-build
-    ref: 4.2.0
+    ref: 4.2.2
     file: gitlab-ci-build.yml
   - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
     ref: 1.2.0
@@ -47,5 +47,5 @@ public:v2.9:
   extends: .publish-public:docker
   variables:
     DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.9.10
-    TAG: 2.9.10 2.9 latest
+    TAG: 2.9.11 2.9 latest
 ...

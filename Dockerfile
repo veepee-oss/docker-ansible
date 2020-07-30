@@ -14,7 +14,7 @@
 
 FROM python:3.8-alpine
 
-ARG ANSIBLE_VERSION="2.9.10"
+ARG ANSIBLE_VERSION="2.9.11"
 
 RUN apk add --no-cache --quiet \
       bash \
