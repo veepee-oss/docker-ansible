@@ -1,3 +1,10 @@
+## [1.0.4](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.3...1.0.4) (2020-07-30)
+
+
+### Reverts
+
+* Revert "fix: publish only on master" ([d3242cd](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/d3242cdad2ca8cc2ca82c7c6d956093544823651))
+
 ## [1.0.3](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.2...1.0.3) (2020-07-18)
 
 
