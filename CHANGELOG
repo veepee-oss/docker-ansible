@@ -1,3 +1,10 @@
+# [1.1.0](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.5...1.1.0) (2020-08-20)
+
+
+### Features
+
+* update ansible to 2.9.11 ([be7eb57](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/be7eb57aa7a4151a8fa1b5705acc06a36b226d76))
+
 ## [1.0.5](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.4...1.0.5) (2020-07-30)
 
 
