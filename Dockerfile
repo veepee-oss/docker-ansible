@@ -14,7 +14,7 @@
 
 FROM python:3.8-alpine
 
-ARG ANSIBLE_VERSION="2.9.11"
+ARG ANSIBLE_VERSION="2.9"
 
 RUN apk add --no-cache --quiet \
       bash \
@@ -34,10 +34,12 @@ RUN apk add --no-cache --quiet \
       unzip
 
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet ansible==${ANSIBLE_VERSION} && \
+    pip3 install --quiet "ansible~=${ANSIBLE_VERSION}.0" && \
     pip3 install --quiet hvac && \
     pip3 install --quiet openshift && \
     pip3 install --quiet psycopg2
+
+RUN ansible-galaxy collection install community.general
 
 RUN apk del --no-cache --quiet \
       build-base \
