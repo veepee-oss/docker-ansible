@@ -1,3 +1,10 @@
+# [1.2.0](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.1.0...1.2.0) (2020-10-14)
+
+
+### Features
+
+* ansible collections ([188e5f9](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/188e5f9874d10800842396fe7df907a8c96e14ba))
+
 # [1.1.0](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.0.5...1.1.0) (2020-08-20)
 
 
