@@ -28,9 +28,15 @@ Docker images of Ansible.
 
 Supported tags (See [Ansible maintenance documentation](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html)).
 
+Each tag has installed the latest patch available when built.
+
+- 2.9
+- 2.10
+
+Older versions are still available, without any update:
+
 - 2.7, 2.7.13
 - 2.8, 2.8.6
-- 2.9, 2.9.11, latest
 
 ## Limitations
 
@@ -43,7 +49,7 @@ request.
 
 ## Miscellaneous
 
-```
+```text
     ╚⊙ ⊙╝
   ╚═(███)═╝
  ╚═(███)═╝

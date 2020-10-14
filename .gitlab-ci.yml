@@ -16,13 +16,12 @@ include:
 
 variables:
   APP_NAME: ansible
-  DOCKER_DISABLE_ALL_JOBS: 'true'
+  SEMANTIC_CONFIG_FILE: changelog
   DOCKER_PUBLIC_REGISTRY_URL: docker.io
   DOCKER_PUBLIC_REGISTRY_USERNAME: ${PUBLIC_REGISTRY_USERNAME}
   DOCKER_PUBLIC_REGISTRY_PASSWORD: ${PUBLIC_REGISTRY_PASSWORD}
   DOCKER_PUBLIC_REPO: vptech
   PUBLIC: 'true'
-  SEMANTIC_CONFIG_FILE: changelog
 
 stages:
   - lint
@@ -31,21 +30,34 @@ stages:
   - publish
   - release
 
-public:v2.7:
-  extends: .publish-public:docker
+publish-feature:docker:
   variables:
-    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.7.13
-    TAG: 2.7.13 2.7
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=${VERSION}
+    TAG: "${CI_COMMIT_REF_SLUG}-${VERSION}"
+  parallel:
+    matrix:
+      - NAME: ['VERSION']
+        VERSION: ['2.9','2.10']
 
-public:v2.8:
-  extends: .publish-public:docker
+delete-feature:docker:
   variables:
-    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.8.6
-    TAG: 2.8.6 2.8
+    TAG: '${CI_COMMIT_REF_SLUG}-2.9 ${CI_COMMIT_REF_SLUG}-2.10'
 
-public:v2.9:
-  extends: .publish-public:docker
+publish-release:docker:
   variables:
-    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=2.9.11
-    TAG: 2.9.11 2.9 latest
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=${VERSION}
+    TAG: "${VERSION}"
+  parallel:
+    matrix:
+      - NAME: ['VERSION']
+        VERSION: ['2.9','2.10']
+
+publish-public-release:docker:
+  variables:
+    DOCKER_BUILD_ARGS: --build-arg ANSIBLE_VERSION=${VERSION}
+    TAG: "${VERSION}"
+  parallel:
+    matrix:
+      - NAME: ['VERSION']
+        VERSION: ['2.9','2.10']
 ...
