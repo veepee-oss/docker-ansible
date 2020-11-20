@@ -1,3 +1,10 @@
+## [1.2.1](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.2.0...1.2.1) (2020-11-20)
+
+
+### Bug Fixes
+
+* iac compliance ([11409e8](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/11409e8a046e37c165fd2ee274549138481a82a8))
+
 # [1.2.0](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.1.0...1.2.0) (2020-10-14)
 
 
