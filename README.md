@@ -1,7 +1,4 @@
-# docker-ansible
-
-[![License][license-img]][license-href]
-[![docker][docker-img]][docker-href]
+# ansible
 
 1. [Overview](#overview)
 1. [Description](#description)
@@ -18,7 +15,7 @@ applications and systems easier to deploy. Avoid writing scripts or custom code
 to deploy and update your applications.  Automate in a language that approaches
 plain English, using SSH, with no agents to install on remote systems.
 
-[ansible.com][overview-href]
+[ansible.com](https://ansible.com/)
 
 ## Description
 
@@ -44,8 +41,7 @@ Currently no limitations.
 
 ## Development
 
-Please read carefully [CONTRIBUTING.md][contribute-href]  before making a merge
-request.
+Please read carefully CONTRIBUTING.md before making a merge request.
 
 ## Miscellaneous
 
@@ -58,10 +54,3 @@ request.
   ╚═(███)═╝
    ╚═(███)═╝
 ```
-
-[license-img]: https://img.shields.io/badge/license-ISC-blue.svg
-[license-href]: LICENSE
-[docker-img]: https://img.shields.io/docker/pulls/vptech/ansible.svg
-[docker-href]: https://registry.hub.docker.com/u/vptech/ansible
-[overview-href]: https://ansible/com/
-[contribute-href]: CONTRIBUTING.md

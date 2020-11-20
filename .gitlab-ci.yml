@@ -1,17 +1,17 @@
 ---
 
 include:
-  - project: veepee/vptech/sre/iac/ci-cd/docker-lint
-    ref: 2.0.1
-    file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/docker-build
-    ref: 4.2.4
+    ref: 4.3.3
     file: gitlab-ci-build.yml
+  - project: veepee/vptech/sre/iac/ci-cd/docker-lint
+    ref: 2.0.2
+    file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
-    ref: 1.2.1
+    ref: 1.2.2
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/semantic-release
-    ref: 2.11.1
+    ref: 3.2.1
     file: gitlab-ci.yml
 
 variables:
@@ -36,8 +36,8 @@ publish-feature:docker:
     TAG: "${CI_COMMIT_REF_SLUG}-${VERSION}"
   parallel:
     matrix:
-      - NAME: ['VERSION']
-        VERSION: ['2.9','2.10']
+      - NAME: [ 'VERSION' ]
+        VERSION: [ '2.9', '2.10' ]
 
 delete-feature:docker:
   variables:
@@ -49,8 +49,8 @@ publish-release:docker:
     TAG: "${VERSION}"
   parallel:
     matrix:
-      - NAME: ['VERSION']
-        VERSION: ['2.9','2.10']
+      - NAME: [ 'VERSION' ]
+        VERSION: [ '2.9', '2.10' ]
 
 publish-public-release:docker:
   variables:
@@ -58,6 +58,6 @@ publish-public-release:docker:
     TAG: "${VERSION}"
   parallel:
     matrix:
-      - NAME: ['VERSION']
-        VERSION: ['2.9','2.10']
+      - NAME: [ 'VERSION' ]
+        VERSION: [ '2.9','2.10' ]
 ...

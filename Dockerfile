@@ -1,4 +1,4 @@
-# Copyright (c) 2019 , Veepee
+# Copyright (c) 2019, Veepee
 #
 # Permission  to use,  copy, modify,  and/or distribute  this software  for any
 # purpose  with or  without  fee is  hereby granted,  provided  that the  above
@@ -12,9 +12,9 @@
 # OTHER  TORTIOUS ACTION,  ARISING OUT  OF  OR IN  CONNECTION WITH  THE USE  OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-FROM python:3.8-alpine
+FROM docker.registry.vptech.eu/python:3.9-alpine
 
-ARG ANSIBLE_VERSION="2.9"
+ARG ANSIBLE_VERSION="2.10"
 
 RUN apk add --no-cache --quiet \
       bash \
