@@ -10,6 +10,20 @@
       }
     ],
     "schedule": [
-      "before 3am on the first day of the month"
+      "before 3am on the first day of the week"
+    ],
+    "regexManagers": [
+      {
+        "fileMatch": ["^Dockerfile$"],
+        "matchStrings": ["ARG ANSIBLE_210_LATEST=(?<currentValue>.*?)\n"],
+        "depNameTemplate": "ansible",
+        "datasourceTemplate": "pypi"
+      },
+      {
+        "fileMatch": ["^Dockerfile$"],
+        "matchStrings": ["ARG ANSIBLE_29_LATEST=(?<currentValue>.*?)\n"],
+        "depNameTemplate": "ansible",
+        "datasourceTemplate": "pypi"
+      }
     ]
 }
