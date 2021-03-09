@@ -12,9 +12,9 @@
 # OTHER  TORTIOUS ACTION,  ARISING OUT  OF  OR IN  CONNECTION WITH  THE USE  OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-FROM docker.registry.vptech.eu/python:3.9-alpine
-
 ARG ANSIBLE_VERSION="2.10"
+
+FROM docker.registry.vptech.eu/python:3.9-alpine AS base
 
 RUN apk add --no-cache --quiet \
       bash \
@@ -26,6 +26,7 @@ RUN apk add --no-cache --quiet \
       libc-dev \
       libffi-dev \
       make \
+      cargo \
       openssh-client \
       openssl-dev \
       postgresql-client \
@@ -33,8 +34,27 @@ RUN apk add --no-cache --quiet \
       postgresql-libs \
       unzip
 
+ENV ANSIBLE_210_LATEST="2.10.7"
+ENV ANSIBLE_29_LATEST="2.9.17"
+
+# that's how you match patterns in sh! xD
+FROM base AS install-2.10
+RUN \
+  case ${ANSIBLE_210_LATEST} in \
+    ${ANSIBLE_VERSION}*) \
+      pip3 install --quiet "ansible==${ANSIBLE_210_LATEST}";; \
+  esac
+
+FROM base AS install-2.9
+RUN \
+  case ${ANSIBLE_29_LATEST} in \
+    ${ANSIBLE_VERSION}*) \
+      pip3 install --quiet "ansible==${ANSIBLE_29_LATEST}";; \
+  esac
+
+FROM install-${ANSIBLE_VERSION} AS final
+
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet "ansible~=${ANSIBLE_VERSION}.0" && \
     pip3 install --quiet hvac && \
     pip3 install --quiet openshift && \
     pip3 install --quiet psycopg2
@@ -44,6 +64,7 @@ RUN ansible-galaxy collection install community.general
 RUN apk del --no-cache --quiet \
       build-base \
       gcc \
+      cargo \
       make  && \
     rm -rf /var/cache/apk/*
 
