@@ -34,10 +34,18 @@ RUN apk add --no-cache --quiet \
       postgresql-libs \
       unzip
 
+ENV ANSIBLE_211_LATEST="2.11.0"
 ENV ANSIBLE_210_LATEST="2.10.7"
 ENV ANSIBLE_29_LATEST="2.9.17"
 
 # that's how you match patterns in sh! xD
+FROM base AS install-2.11
+RUN \
+  case ${ANSIBLE_211_LATEST} in \
+    ${ANSIBLE_VERSION}*) \
+      pip3 install --quiet "ansible-core==${ANSIBLE_211_LATEST}";; \
+  esac
+
 FROM base AS install-2.10
 RUN \
   case ${ANSIBLE_210_LATEST} in \
