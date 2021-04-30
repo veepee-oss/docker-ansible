@@ -41,7 +41,7 @@ publish-feature:docker:
 
 delete-feature:docker:
   variables:
-    TAG: '${CI_COMMIT_REF_SLUG}-2.9 ${CI_COMMIT_REF_SLUG}-2.10'
+    TAG: '${CI_COMMIT_REF_SLUG}-2.9 ${CI_COMMIT_REF_SLUG}-2.10 ${CI_COMMIT_REF_SLUG}-2.11'
 
 publish-release:docker:
   variables:
