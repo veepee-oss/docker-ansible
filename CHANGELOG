@@ -1,3 +1,10 @@
+## [1.4.1](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.4.0...1.4.1) (2021-05-26)
+
+
+### Bug Fixes
+
+* forget to fix renovate ([ecb7056](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/commit/ecb7056d540fda15f254245f70bb37188462159a))
+
 # [1.4.0](https://git.vptech.eu/veepee/vptech/sre/iac/docker-images/ansible/compare/1.3.0...1.4.0) (2021-05-03)
 
 
