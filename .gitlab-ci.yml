@@ -11,7 +11,7 @@ include:
     ref: 1.2.2
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/semantic-release
-    ref: 3.2.1
+    ref: 3.7.1
     file: gitlab-ci.yml
 
 variables:
