@@ -5,7 +5,7 @@ include:
     ref: 4.3.3
     file: gitlab-ci-build.yml
   - project: veepee/vptech/sre/iac/ci-cd/docker-lint
-    ref: 2.0.2
+    ref: 2.1.1
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
     ref: 1.2.2
