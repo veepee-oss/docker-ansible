@@ -14,7 +14,7 @@
 
 ARG ANSIBLE_VERSION="2.11"
 
-FROM docker.registry.vptech.eu/python:3.9-alpine AS base
+FROM docker.registry.vptech.eu/python:3.10-alpine AS base
 
 RUN apk add --no-cache --quiet \
       bash \
