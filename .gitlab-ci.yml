@@ -2,7 +2,7 @@
 
 include:
   - project: veepee/vptech/sre/iac/ci-cd/docker-build
-    ref: 4.5.1
+    ref: 4.5.2
     file: gitlab-ci-build.yml
   - project: veepee/vptech/sre/iac/ci-cd/docker-lint
     ref: 2.1.1
