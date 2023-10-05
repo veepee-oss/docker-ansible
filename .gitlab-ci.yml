@@ -7,9 +7,6 @@ include:
   - project: veepee/vptech/sre/iac/ci-cd/docker-lint
     ref: latest
     file: gitlab-ci.yml
-  - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
-    ref: latest
-    file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/semantic-release
     ref: latest
     file: gitlab-ci.yml
