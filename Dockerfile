@@ -1,17 +1,3 @@
-# Copyright (c) 2019, Veepee
-#
-# Permission  to use,  copy, modify,  and/or distribute  this software  for any
-# purpose  with or  without  fee is  hereby granted,  provided  that the  above
-# copyright notice and this permission notice appear in all copies.
-#
-# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-# REGARD TO THIS  SOFTWARE INCLUDING ALL IMPLIED  WARRANTIES OF MERCHANTABILITY
-# AND FITNESS.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-# INDIRECT, OR CONSEQUENTIAL  DAMAGES OR ANY DAMAGES  WHATSOEVER RESULTING FROM
-# LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-# OTHER  TORTIOUS ACTION,  ARISING OUT  OF  OR IN  CONNECTION WITH  THE USE  OR
-# PERFORMANCE OF THIS SOFTWARE.
-
 ARG ANSIBLE_VERSION="2.15"
 
 FROM docker.registry.vptech.eu/python:3.10-alpine AS base
@@ -38,6 +24,9 @@ ENV ANSIBLE_215_LATEST="2.15.4"
 ENV ANSIBLE_211_LATEST="2.11.12"
 ENV ANSIBLE_210_LATEST="2.10.7"
 ENV ANSIBLE_29_LATEST="2.9.27"
+
+ENV ANSIBLE_COMMUNITY_GENERAL_VERSION="7.4.0"
+ENV _GALAXY_ARTIFACT_URL="https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts"
 
 # that's how you match patterns in sh! xD
 FROM base AS install-2.15
@@ -71,11 +60,15 @@ RUN \
 FROM install-${ANSIBLE_VERSION} AS final
 
 RUN pip3 install --quiet --upgrade pip && \
-    pip3 install --quiet hvac && \
-    pip3 install --quiet openshift && \
-    pip3 install --quiet psycopg2
+    pip3 install --quiet hvac openshift psycopg2
 
-RUN ansible-galaxy collection install community.general
+# this fails in some legacy ansible version : ansible-galaxy collection install community.general --force
+# emulate it...
+RUN set -x && \
+  wget "${_GALAXY_ARTIFACT_URL}/community-general-${ANSIBLE_COMMUNITY_GENERAL_VERSION}.tar.gz" \
+    -O community_general.tgz --quiet && \
+  ansible-galaxy collection install ./community_general.tgz && \
+  rm community_general.tgz
 
 RUN apk del --no-cache --quiet \
       build-base \
