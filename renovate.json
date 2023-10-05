@@ -15,8 +15,8 @@
     "regexManagers": [
       {
         "fileMatch": ["^Dockerfile$"],
-        "matchStrings": ["ARG ANSIBLE_\\d+_LATEST=(?<currentValue>.*?)\n"],
-        "depNameTemplate": "ansible",
+        "matchStrings": ["ENV ANSIBLE_\\d+_LATEST=\"(?<currentValue>.*?)\"\n"],
+        "depNameTemplate": "ansible-core",
         "datasourceTemplate": "pypi"
       }
     ]
