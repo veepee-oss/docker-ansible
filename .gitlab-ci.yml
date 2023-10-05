@@ -2,13 +2,16 @@
 
 include:
   - project: veepee/vptech/sre/iac/ci-cd/docker-build
-    ref: latest
+    ref: 5-latest
+    file: gitlab-ci.yml
+  - project: veepee/vptech/sre/iac/ci-cd/markdown-lint
+    ref: 1-latest
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/docker-lint
-    ref: latest
+    ref: 1-latest
     file: gitlab-ci.yml
   - project: veepee/vptech/sre/iac/ci-cd/semantic-release
-    ref: latest
+    ref: 2-latest
     file: gitlab-ci.yml
 
 variables:
