@@ -29,11 +29,8 @@ Each tag has installed the latest patch available when built.
 
 - 2.9
 - 2.10
-
-Older versions are still available, without any update:
-
-- 2.7, 2.7.13
-- 2.8, 2.8.6
+- 2.11
+- 2.15
 
 ## Limitations
 
