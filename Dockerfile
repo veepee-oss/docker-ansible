@@ -36,7 +36,7 @@ RUN apk add --no-cache --quiet \
 
 ENV ANSIBLE_215_LATEST="2.15.4"
 ENV ANSIBLE_211_LATEST="2.11.12"
-ENV ANSIBLE_210_LATEST="2.10.17"
+ENV ANSIBLE_210_LATEST="2.10.7"
 ENV ANSIBLE_29_LATEST="2.9.27"
 
 # that's how you match patterns in sh! xD
